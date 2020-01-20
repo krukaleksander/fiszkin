@@ -1,23 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams
+} from "react-router-dom";
+import Project from './components/Project';
+import Imex from './components/Imex';
+import StartLearn from './components/StartLearn';
 
 function App() {
   return (
+
     <div className="App">
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/start">Rozpocznij naukę</Link>
+            </li>
+            <li>
+              <Link to="/imex">Import / Export</Link>
+            </li>
+            <li>
+              <Link to="/project">O projekcie</Link>
+            </li>
+          </ul>
+
+          <Switch>
+            <Route path="/start">
+              <StartLearn />
+            </Route>
+            <Route path="/imex">
+              <Imex />
+            </Route>
+            <Route path="/project">
+              <Project />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="main-heading">Fiszkin</h1>
+        <p className="main-desc">Darmowe narzędzie do nauki poprzez stosowanie fiszek =)</p>
       </header>
     </div>
   );

@@ -1,0 +1,17 @@
+2. Zasymuluj wyjściową bazę danych w pliku JSON
+Każdy rekord powinien zawierać - słowo, tłumaczenie, czy pamiętasz oraz unikalny id
+
+
+
+1 Funkcje:
+
+- tworzenie głównego folderu i podfolderów
+- tworzenie pojedyńczych fiszek w podfolderach
+- usuwanie fiszek, podfolderów, folderów
+- przenoszenie fiszek z jednej paczki do drugiej
+- cięcie całej paczki na mniejsze paczki
+- eksport / import całych paczek (JSON)
+- fiszki dostępne z poziomu frontu
+- dodawanie, usuwanie itp dostępne z poziomu BO
+- przeglądanie fiszek oczywiście - losowo po kojleji, słowo, definicja
+
