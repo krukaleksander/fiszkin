@@ -12,7 +12,7 @@ import Imex from './components/Imex';
 import StartLearn from './components/StartLearn';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
-import './styles/styles.css';
+import './css/styles.min.css';
 window.jQuery = window.$ = $;
 require('bootstrap');
 

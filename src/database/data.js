@@ -1,4 +1,4 @@
-const exampleBase = {
+const exampleBase = [{
     packageName: 'Animals',
     creationDate: '2021-01-09',
     content: [{
@@ -32,6 +32,6 @@ const exampleBase = {
             remember: false
         },
     ]
-}
+}]
 
 export default exampleBase;
