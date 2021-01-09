@@ -1,7 +1,7 @@
 2. Zasymuluj wyjściową bazę danych w pliku JSON
 Każdy rekord powinien zawierać - słowo, tłumaczenie, czy pamiętasz oraz unikalny id
 
-
+zrób switchem przejście na główną stronę
 
 1 Funkcje:
 
