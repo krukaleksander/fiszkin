@@ -3,8 +3,27 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { AiFillEdit } from 'react-icons/ai';
 import { RiDeleteBinFill } from 'react-icons/ri';
 
-const FishPackage = ({ content, name, setShowDetails }) => {
+const FishPackage = ({ content, name, setShowDetails, data, setData }) => {
     const fishes = content;
+
+    const removeItem = (name, index) => {
+        console.log('Im working')
+        const newData = data.map((pack) => {
+            if (pack.packageName === name) {
+                const { packageName, creationDate, content } = pack;
+                const itemToRemove = content[index];
+                const newContent = content.filter((pair) => pair !== itemToRemove);
+                return {
+                    packageName,
+                    creationDate,
+                    content: newContent
+                }
+
+            } else {
+                return pack;
+            }
+        })
+    }
 
     const closeContainer = () => {
         setShowDetails(false);
@@ -24,7 +43,7 @@ const FishPackage = ({ content, name, setShowDetails }) => {
                                 <div className="word__underline"></div>
                                 <p className='word__translation'>{translation}</p>
                             </div>
-                            <RiDeleteBinFill className='word__remove' />
+                            <RiDeleteBinFill className='word__remove' onClick={() => removeItem(name, index)} />
 
                         </div>
                     )
