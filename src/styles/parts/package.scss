@@ -1,4 +1,19 @@
 .package {
     display: flex;
     border: 1px #ddd solid;
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+
+    &__icon {
+        margin-top: 10px;
+    }
+
+    &__name {
+        font-weight: bolder;
+    }
+}
+
+.new-package {
+    margin-top: 10px;
 }

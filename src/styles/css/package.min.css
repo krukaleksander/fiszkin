@@ -1,2 +1,2 @@
-.package{display:-webkit-box;display:-ms-flexbox;display:flex;border:1px #ddd solid}
+.package{display:-webkit-box;display:-ms-flexbox;display:flex;border:1px #ddd solid;height:40px;line-height:40px;cursor:pointer}.package__icon{margin-top:10px}.package__name{font-weight:bolder}.new-package{margin-top:10px}
 /*# sourceMappingURL=package.min.css.map */
