@@ -33,7 +33,7 @@ const StartLearn = () => {
                     )
                 })}
             </div>
-            {showDetails && <FishPackage content={fishes} setData={setData} data={data} name={nameOfPackage} setShowDetails={setShowDetails} />}
+            {showDetails && <FishPackage content={fishes} setData={setData} data={data} name={nameOfPackage} setShowDetails={setShowDetails} setFishes={setFishes} />}
             <div className="new-package">
                 <button className='btn btn-secondary'>Utwórz paczkę</button>
             </div>

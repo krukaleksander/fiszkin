@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
 import { AiFillEdit } from 'react-icons/ai';
 import { RiDeleteBinFill } from 'react-icons/ri';
 
 const FishPackage = ({ content, name, setShowDetails, data, setData }) => {
-    const fishes = content;
+    const [fishes, setFishes] = useState(content);
 
     const removeItem = (name, index) => {
-        console.log('Im working')
         const newData = data.map((pack) => {
             if (pack.packageName === name) {
+                console.log('in the case')
                 const { packageName, creationDate, content } = pack;
                 const itemToRemove = content[index];
                 const newContent = content.filter((pair) => pair !== itemToRemove);
+                setFishes(newContent);
                 return {
                     packageName,
                     creationDate,
@@ -22,7 +23,9 @@ const FishPackage = ({ content, name, setShowDetails, data, setData }) => {
             } else {
                 return pack;
             }
-        })
+        });
+        console.log(newData);
+        setData(newData);
     }
 
     const closeContainer = () => {
