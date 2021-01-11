@@ -15,7 +15,6 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
 
     const removeItem = (index) => {
         const newData = data.map((pack) => {
-            console.log('generating newData');
             if (pack.packageId === idOfPack) {
                 const { packageName, creationDate, content } = pack;
                 const itemToRemove = content[index];
@@ -46,7 +45,42 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
 
     const handleSubmitEdit = (e) => {
         e.preventDefault();
-        const fishAfterEdit = {};
+        const fishAfterEdit = {
+            id: editWordId,
+            word: editWord,
+            translation: editTranslation,
+            remember: false
+        };
+        const newData = data.map((pack) => {
+            if (pack.packageId === idOfPack) {
+                const { packageName, creationDate, content } = pack;
+                const newContent = content.map((fish) => {
+                    console.log(fish.id)
+                    console.log()
+                    if (fish.id === editWordId) {
+                        return fishAfterEdit;
+                    } else {
+                        return fish;
+                    };
+                });
+
+                // koniec edycji
+                setFishes(newContent);
+                return {
+                    packageId: idOfPack,
+                    packageName,
+                    creationDate,
+                    content: newContent
+                }
+
+            } else {
+
+                return pack;
+            }
+        });
+        setData(newData);
+        setShowEditFish(false);
+
     }
 
     const closeContainer = () => {
