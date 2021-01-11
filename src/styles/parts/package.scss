@@ -75,4 +75,15 @@
             cursor: pointer;
         }
     }
+
+    .edit-fish {
+        position: fixed;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #ddd;
+        min-height: 200px;
+        min-width: 80vw;
+        padding: 10px;
+    }
 }
