@@ -2,31 +2,42 @@ import React, { useState } from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
 import { AiFillEdit } from 'react-icons/ai';
 import { RiDeleteBinFill } from 'react-icons/ri';
+import uniqid from 'uniqid';
 
-const FishPackage = ({ content, name, setShowDetails, data, setData }) => {
+const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData }) => {
     const [fishes, setFishes] = useState(content);
 
-    const removeItem = (name, index) => {
+    const removeItem = (index) => {
+        console.log('im working');
         const newData = data.map((pack) => {
-            if (pack.packageName === name) {
-                console.log('in the case')
+            console.log('generating newData');
+            if (pack.packageId === idOfPack) {
+                console.log('id match')
+                console.log(pack);
                 const { packageName, creationDate, content } = pack;
                 const itemToRemove = content[index];
                 const newContent = content.filter((pair) => pair !== itemToRemove);
                 setFishes(newContent);
                 return {
+                    packageId: idOfPack,
                     packageName,
                     creationDate,
                     content: newContent
                 }
 
             } else {
+                console.log('id do not match')
+                console.log(pack);
+                console.log(`Package id: ${pack.packageId}, id in state: ${idOfPack}`)
                 return pack;
             }
         });
-        console.log(newData);
         setData(newData);
-    }
+    };
+
+    const editItem = (word, translation, id) => {
+        // function with is editing existing fish
+    };
 
     const closeContainer = () => {
         setShowDetails(false);
@@ -46,7 +57,7 @@ const FishPackage = ({ content, name, setShowDetails, data, setData }) => {
                                 <div className="word__underline"></div>
                                 <p className='word__translation'>{translation}</p>
                             </div>
-                            <RiDeleteBinFill className='word__remove' onClick={() => removeItem(name, index)} />
+                            <RiDeleteBinFill className='word__remove' onClick={() => removeItem(index)} />
 
                         </div>
                     )

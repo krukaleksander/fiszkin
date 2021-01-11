@@ -7,12 +7,14 @@ const StartLearn = () => {
     const [data, setData] = useState(exampleBase);
     const [fishes, setFishes] = useState([]);
     const [nameOfPackage, setNameOfPackage] = useState('');
+    const [idOfEdit, setIdOfEdit] = useState('');
     const [showDetails, setShowDetails] = useState(false);
 
     const showFish = (index) => {
-        const { packageName, content } = data[index];
+        const { packageId, packageName, content } = data[index];
         setFishes(content);
         setNameOfPackage(packageName);
+        setIdOfEdit(packageId);
         setShowDetails(true)
     }
     return (
@@ -33,7 +35,7 @@ const StartLearn = () => {
                     )
                 })}
             </div>
-            {showDetails && <FishPackage content={fishes} setData={setData} data={data} name={nameOfPackage} setShowDetails={setShowDetails} setFishes={setFishes} />}
+            {showDetails && <FishPackage content={fishes} setData={setData} data={data} name={nameOfPackage} idOfPack={idOfEdit} setShowDetails={setShowDetails} setFishes={setFishes} />}
             <div className="new-package">
                 <button className='btn btn-secondary'>Utwórz paczkę</button>
             </div>
