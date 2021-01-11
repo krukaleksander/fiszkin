@@ -2,12 +2,14 @@ import React, { useState, useRef } from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
 import { AiFillEdit } from 'react-icons/ai';
 import { RiDeleteBinFill } from 'react-icons/ri';
+import { GiCheckMark } from 'react-icons/gi';
 import uniqid from 'uniqid';
 
 const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData }) => {
     const [fishes, setFishes] = useState(content);
-    const [editWord, setEditWord] = useState('parrot');
-    const [editTranslation, setEditTranslation] = useState('papuga');
+    const [editWord, setEditWord] = useState('');
+    const [editTranslation, setEditTranslation] = useState('');
+    const [editWordId, setEditWordId] = useState('');
     const [showEditFish, setShowEditFish] = useState(false);
 
 
@@ -35,14 +37,17 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
     };
 
     const editItem = (word, translation, id) => {
-        // function with is editing existing fish       
-        // po kliknięciu w konkretną ikonkę generowany jest stan z word, translation i id
-        // pojawiają się input i text area, które są kontrolowane onChange z wartością aktualną. 
-        // jak delikwent kliknie w ikonkę że akceptuje to stan się czyści, i zmieniana jest wartośc konkretnej fiszki 
-        //odnalezionej po id
+        setEditWord(word);
+        setEditTranslation(translation);
+        setEditWordId(id);
         setShowEditFish(true);
 
     };
+
+    const handleSubmitEdit = (e) => {
+        e.preventDefault();
+        const fishAfterEdit = {};
+    }
 
     const closeContainer = () => {
         setShowDetails(false);
@@ -56,10 +61,10 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
             <h1 className="package-present__title">{name}</h1>
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {
-                    const { word, translation } = fish;
+                    const { word, translation, id } = fish;
                     return (
                         <div className="word" key={index}>
-                            <AiFillEdit className='word__edit' onClick={editItem} />
+                            <AiFillEdit className='word__edit' onClick={() => editItem(word, translation, id)} />
                             <div className='word__details'>
                                 <p className='word__name'>{word}</p>
                                 <div className="word__underline"></div>
@@ -71,11 +76,12 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
                     )
                 })}
             </div>
-            {showEditFish && <div className="edit-fish">
+            {showEditFish && <form className="edit-fish" onSubmit={handleSubmitEdit}>
                 <VscChromeClose className='package-present__close' onClick={closeEditFish} />
                 <input className='edit-fish__input' type="text" value={editWord} onChange={(e) => setEditWord(e.target.value)} />
                 <textarea className='edit-fish__textarea' name="translation" id="" cols="30" rows="10" value={editTranslation} onChange={(e) => setEditTranslation(e.target.value)}></textarea>
-            </div>}
+                <button type='submit' className='edit-fish__buton'><GiCheckMark /></button>
+            </form>}
         </div>
     );
 }
