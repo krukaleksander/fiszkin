@@ -55,8 +55,6 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
             if (pack.packageId === idOfPack) {
                 const { packageName, creationDate, content } = pack;
                 const newContent = content.map((fish) => {
-                    console.log(fish.id)
-                    console.log()
                     if (fish.id === editWordId) {
                         return fishAfterEdit;
                     } else {
@@ -64,7 +62,6 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
                     };
                 });
 
-                // koniec edycji
                 setFishes(newContent);
                 return {
                     packageId: idOfPack,
@@ -111,9 +108,9 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
                 })}
             </div>
             {showEditFish && <form className="edit-fish" onSubmit={handleSubmitEdit}>
-                <VscChromeClose className='package-present__close' onClick={closeEditFish} />
+                <VscChromeClose className='edit-fish__close' onClick={closeEditFish} />
                 <input className='edit-fish__input' type="text" value={editWord} onChange={(e) => setEditWord(e.target.value)} />
-                <textarea className='edit-fish__textarea' name="translation" id="" cols="30" rows="10" value={editTranslation} onChange={(e) => setEditTranslation(e.target.value)}></textarea>
+                <textarea className='edit-fish__textarea' name="translation" id="" cols="20" rows="5" value={editTranslation} onChange={(e) => setEditTranslation(e.target.value)}></textarea>
                 <button type='submit' className='edit-fish__buton'><GiCheckMark /></button>
             </form>}
         </div>

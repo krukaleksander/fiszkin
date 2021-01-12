@@ -81,9 +81,18 @@
         top: 50px;
         left: 50%;
         transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
         background-color: #ddd;
         min-height: 200px;
         min-width: 80vw;
         padding: 10px;
+
+        &__close {
+            font-size: 30px;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+
     }
 }
