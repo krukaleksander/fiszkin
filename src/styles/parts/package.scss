@@ -74,6 +74,16 @@
             align-self: center;
             cursor: pointer;
         }
+
+        &__remember {
+            font-weight: bolder;
+            letter-spacing: 1px;
+            color: red;
+
+            &--true {
+                color: green;
+            }
+        }
     }
 
     .edit-fish {

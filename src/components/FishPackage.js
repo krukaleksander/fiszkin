@@ -92,7 +92,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
             <h1 className="package-present__title">{name}</h1>
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {
-                    const { word, translation, id } = fish;
+                    const { word, translation, id, remember } = fish;
                     return (
                         <div className="word" key={index}>
                             <AiFillEdit className='word__edit' onClick={() => editItem(word, translation, id)} />
@@ -100,6 +100,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
                                 <p className='word__name'>{word}</p>
                                 <div className="word__underline"></div>
                                 <p className='word__translation'>{translation}</p>
+                                <p className={remember ? 'word__remember word__remember--true' : 'word__remember'}>{remember ? 'pamiętasz' : 'nie pamiętasz'}</p>
                             </div>
                             <RiDeleteBinFill className='word__remove' onClick={() => removeItem(index)} />
 
