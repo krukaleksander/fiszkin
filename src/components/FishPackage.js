@@ -3,7 +3,8 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { AiFillEdit } from 'react-icons/ai';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { GiCheckMark } from 'react-icons/gi';
-import uniqid from 'uniqid';
+import AddNewFish from './AddNewFish';
+// import uniqid from 'uniqid';
 
 const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData }) => {
     const [fishes, setFishes] = useState(content);
@@ -90,6 +91,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
         <div className="package-present">
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
+            <AddNewFish fishes={fishes} setFishes={setFishes} />
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {
                     const { word, translation, id, remember } = fish;
