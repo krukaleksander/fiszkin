@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
-const AddNewFish = ({ fishes, data, setData, idOfPack }) => {
+import { VscChromeClose } from 'react-icons/vsc';
+const AddNewFish = ({ fishes, setFishes, data, setData, idOfPack }) => {
     const [addFormFlag, setAddFormFlag] = useState(false);
     const [newWord, setNewWord] = useState('');
     const [newTranslation, setNewTranslation] = useState('');
@@ -34,6 +35,7 @@ const AddNewFish = ({ fishes, data, setData, idOfPack }) => {
                 return pack;
             };
         });
+        setFishes(newFishArr);
         setData(newData);
 
         setAddFormFlag(false);
@@ -46,11 +48,15 @@ const AddNewFish = ({ fishes, data, setData, idOfPack }) => {
     const handleTranslation = (e) => {
         setNewTranslation(e.target.value);
     };
+    const closeAddNewFish = () => {
+        setAddFormFlag(false);
+    };
 
     return (
         <div className="addNewFish">
             <button className="btn btn-success" onClick={showAddForm}>Nowa fiszka</button>
             {addFormFlag && <form onSubmit={handleSubmit} className='add-new-fish'>
+                <VscChromeClose class='add-new-fish__close' onClick={closeAddNewFish} />
                 <input type="text" className="add-new-fish__input-word" onChange={handleWord} placeholder='nowe słowo' value={newWord} />
                 <input type="text" className="add-new-fish__input-translation" onChange={handleTranslation} placeholder='nowe objaśnienie' value={newTranslation} />
                 <button type='submit' className='btn btn-success'>Dodaj</button>

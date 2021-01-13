@@ -105,4 +105,17 @@
         }
 
     }
+
+    .add-new-fish {
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+
+        &__close {
+            font-size: 25px;
+            align-self: flex-end;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+    }
 }
