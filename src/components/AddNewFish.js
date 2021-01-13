@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
-const AddNewFish = ({ fishes, setFishes }) => {
+const AddNewFish = ({ fishes, data, setData, idOfPack }) => {
     const [addFormFlag, setAddFormFlag] = useState(false);
     const [newWord, setNewWord] = useState('');
     const [newTranslation, setNewTranslation] = useState('');
@@ -21,6 +21,20 @@ const AddNewFish = ({ fishes, setFishes }) => {
         // trzeba przekazać sobie data, setData, idOfPack i zrobić znowu funkcję, że jeśli 
         // id zgadza się z aktualnym id paczki (idOfpack) to zmieniamy fiszki i zwracamy obiekt z którego destrukturyzujemy jego aktualne parametry i zienamy tylko content!
         // w innym wypadku zwracamy paczkę
+        const newData = data.map(pack => {
+            const { packageId, packageName, creationDate } = pack;
+            if (packageId === idOfPack) {
+                return {
+                    packageId,
+                    packageName,
+                    creationDate,
+                    content: newFishArr
+                }
+            } else {
+                return pack;
+            };
+        });
+        setData(newData);
 
         setAddFormFlag(false);
 

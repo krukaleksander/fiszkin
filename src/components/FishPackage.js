@@ -91,7 +91,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
         <div className="package-present">
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
-            <AddNewFish fishes={fishes} setFishes={setFishes} />
+            <AddNewFish fishes={fishes} setFishes={setFishes} data={data} setData={setData} idOfPack={idOfPack} />
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {
                     const { word, translation, id, remember } = fish;
