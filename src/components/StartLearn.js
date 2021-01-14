@@ -46,7 +46,7 @@ const StartLearn = () => {
             <div className="new-package">
                 <button className='btn btn-secondary' onClick={showAddPackageFn}>Utwórz paczkę</button>
                 {showAddPackage && <form className='new-package-form'>
-                    <VscChromeClose onClick={() => setShowAddPackage(false)} />
+                    <VscChromeClose className='new-package-form__close' onClick={() => setShowAddPackage(false)} />
                     <input type="text" className="new-package-form__input" placeholder='nazwa paczki' value={newPackageName} onChange={(e) => setNewPackageName(e.target.value)} />
                     <button type='submit' class='btn btn-info'>Dodaj</button>
                 </form>}
