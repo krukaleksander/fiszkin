@@ -27,7 +27,7 @@ const StartLearn = () => {
     };
     const createNewFolder = (e) => {
         e.preventDefault();
-        //here goes code about creating new folder with fishes :)
+
         function formatDate(date) {
             var d = new Date(date),
                 month = '' + (d.getMonth() + 1),
@@ -42,13 +42,15 @@ const StartLearn = () => {
             return [year, month, day].join('-');
         };
 
-        const newPack = {
+        const newPack = [{
             packageId: uniqid('fish-pack-'),
             packageName: newPackageName,
             creationDate: formatDate(new Date()),
             content: []
-        };
-        console.log(newPack);
+        }];
+
+        const newData = data.concat(newPack);
+        setData(newData);
         setShowAddPackage(false);
     };
     return (

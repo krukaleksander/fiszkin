@@ -38,6 +38,7 @@ const exampleBase = [{
             translation: 'Mysz',
             remember: false
         },
+
     ]
 }]
 
