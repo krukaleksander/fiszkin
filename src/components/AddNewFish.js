@@ -56,7 +56,7 @@ const AddNewFish = ({ fishes, setFishes, data, setData, idOfPack }) => {
         <div className="addNewFish">
             <button className="btn btn-success" onClick={showAddForm}>Nowa fiszka</button>
             {addFormFlag && <form onSubmit={handleSubmit} className='add-new-fish'>
-                <VscChromeClose class='add-new-fish__close' onClick={closeAddNewFish} />
+                <VscChromeClose className='add-new-fish__close' onClick={closeAddNewFish} />
                 <input type="text" className="add-new-fish__input-word" onChange={handleWord} placeholder='nowe słowo' value={newWord} />
                 <input type="text" className="add-new-fish__input-translation" onChange={handleTranslation} placeholder='nowe objaśnienie' value={newTranslation} />
                 <button type='submit' className='btn btn-success'>Dodaj</button>
