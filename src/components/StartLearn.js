@@ -4,6 +4,7 @@ import Card from './Card';
 import FishPackage from './FishPackage';
 import { BiFolderOpen } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
+import uniqid from 'uniqid';
 const StartLearn = () => {
     const [data, setData] = useState(exampleBase);
     const [fishes, setFishes] = useState([]);
@@ -23,6 +24,32 @@ const StartLearn = () => {
 
     const showAddPackageFn = () => {
         setShowAddPackage(true);
+    };
+    const createNewFolder = (e) => {
+        e.preventDefault();
+        //here goes code about creating new folder with fishes :)
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+                month = '0' + month;
+            if (day.length < 2)
+                day = '0' + day;
+
+            return [year, month, day].join('-');
+        };
+
+        const newPack = {
+            packageId: uniqid('fish-pack-'),
+            packageName: newPackageName,
+            creationDate: formatDate(new Date()),
+            content: []
+        };
+        console.log(newPack);
+        setShowAddPackage(false);
     };
     return (
 
@@ -45,10 +72,10 @@ const StartLearn = () => {
             {showDetails && <FishPackage content={fishes} setData={setData} data={data} name={nameOfPackage} idOfPack={idOfEdit} setShowDetails={setShowDetails} setFishes={setFishes} />}
             <div className="new-package">
                 <button className='btn btn-secondary' onClick={showAddPackageFn}>Utwórz paczkę</button>
-                {showAddPackage && <form className='new-package-form'>
+                {showAddPackage && <form onSubmit={createNewFolder} className='new-package-form'>
                     <VscChromeClose className='new-package-form__close' onClick={() => setShowAddPackage(false)} />
                     <input type="text" className="new-package-form__input" placeholder='nazwa paczki' value={newPackageName} onChange={(e) => setNewPackageName(e.target.value)} />
-                    <button type='submit' class='btn btn-info'>Dodaj</button>
+                    <button type='submit' className='btn btn-info'>Dodaj</button>
                 </form>}
             </div>
         </div>
