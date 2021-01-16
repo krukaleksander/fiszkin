@@ -16,12 +16,15 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
     const [indexOfFish, setIndexOfFish] = useState(0);
 
     const checkIndex = (number) => {
-        if (number > fishes.length) return 0;
+        if (number > fishes.length - 1) return 0;
         if (number < 0) return fishes.length - 1;
+        return number
+
     };
     const changeIndex = (flag) => {
-        if (flag === 'plus') setIndexOfFish(2);
-        if (flag === 'minus') setIndexOfFish(1);
+        if (flag === 'plus') setIndexOfFish(checkIndex(indexOfFish + 1));
+        if (flag === 'minus') setIndexOfFish(checkIndex(indexOfFish - 1));
+        console.log(indexOfFish)
     };
     const removeItem = (index) => {
         const newData = data.map((pack) => {
