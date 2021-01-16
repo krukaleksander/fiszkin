@@ -15,7 +15,16 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
     const [showCard, setShowCard] = useState(false);
     const [indexOfFish, setIndexOfFish] = useState(0);
 
+    const checkIndex = (number) => {
+        if (number > fishes.length) return 0;
+        if (number < 0) return fishes.length - 1;
+    };
+    const changeIndex = (flag) => {
 
+        if (flag === 'plus') setIndexOfFish(2);
+        if (flag === 'minus') setIndexOfFish(1);
+        console.log(indexOfFish)
+    };
     const removeItem = (index) => {
         const newData = data.map((pack) => {
             if (pack.packageId === idOfPack) {
@@ -94,7 +103,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
             <button className='btn btn-primary package-present__learn-btn' onClick={() => setShowCard(true)}>Sprawdź się!</button>
-            {showCard && <Card fish={fishes[indexOfFish]} setShowCard={setShowCard} />}
+            {showCard && <Card fish={fishes[indexOfFish]} setShowCard={setShowCard} changeIndex={changeIndex} />}
             <AddNewFish fishes={fishes} setFishes={setFishes} data={data} setData={setData} idOfPack={idOfPack} />
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {

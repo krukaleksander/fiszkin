@@ -1,8 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
 import { TiArrowLeftOutline, TiArrowRightOutline } from 'react-icons/ti';
-const Card = ({ fish, setShowCard }) => {
-    const { word, translation, remember } = fish;
+import { useEffect } from 'react';
+const Card = ({ fish, setShowCard, changeIndex }) => {
+    useEffect(() => {
+        setActualFish(fish);
+    }, [fish])
+    const [actualFish, setActualFish] = useState(fish);
+    console.log(actualFish);
+    const { word, translation, remember } = actualFish;
     const [text, setText] = useState(word);
     const [showRemember, setShowRemember] = useState(false);
     const handleCheck = () => {
@@ -14,7 +20,7 @@ const Card = ({ fish, setShowCard }) => {
             <VscChromeClose className='card-blur__close' onClick={() => setShowCard(false)} />
             <div className="card">
                 <div className='card__back' >
-                    <TiArrowLeftOutline />
+                    <TiArrowLeftOutline onClick={() => changeIndex('minus')} />
                 </div>
                 <div className="card__content">
                     <p className={remember ? 'card__remember' : ' card__not-remamber'}>
@@ -28,7 +34,7 @@ const Card = ({ fish, setShowCard }) => {
                     </div>}
                 </div>
                 <div className='card__next' >
-                    <TiArrowRightOutline />
+                    <TiArrowRightOutline onClick={() => changeIndex('plus')} />
                 </div>
             </div>
         </div>
