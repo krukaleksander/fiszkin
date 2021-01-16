@@ -48,5 +48,13 @@
             border-top: 1px solid #ddd;
             padding-top: 10px;
         }
+
+        &__remember {
+            color: rgb(38, 143, 38);
+        }
+
+        &__not-remamber {
+            color: rgb(240, 128, 128);
+        }
     }
 }

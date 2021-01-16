@@ -146,7 +146,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
         <div className="package-present">
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
-            <button className='btn btn-primary package-present__learn-btn' onClick={() => setShowCard(true)}>Sprawdź się!</button>
+            {fishes.length > 0 && <button className='btn btn-primary package-present__learn-btn' onClick={() => setShowCard(true)}>Sprawdź się!</button>}
             {showCard && <Card fish={fishes[indexOfFish]} setShowCard={setShowCard} changeIndex={changeIndex} setIndexOfFish={setIndexOfFish} setRemember={setRemember} />}
             <AddNewFish fishes={fishes} setFishes={setFishes} data={data} setData={setData} idOfPack={idOfPack} />
             <div className="words-wrapper">

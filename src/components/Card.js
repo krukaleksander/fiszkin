@@ -35,8 +35,14 @@ const Card = ({ fish, setShowCard, changeIndex, setIndexOfFish, setRemember }) =
                     <h1 className="card-word">{text}</h1>
                     <button className="btn btn-info" onClick={handleCheck}>Sprawdź!</button>
                     {showRemember && <div className="card__remember-or-not">
-                        <button className='btn btn-success' onClick={() => setRemember(id, 'remember')}>Pamiętam</button>
-                        <button className='btn btn-warning' onClick={() => setRemember(id, 'not-remember')}>Nie pamiętam</button>
+                        <button className='btn btn-success' onClick={() => {
+                            setRemember(id, 'remember');
+                            changeIndex('plus');
+                        }}>Pamiętam</button>
+                        <button className='btn btn-warning' onClick={() => {
+                            setRemember(id, 'not-remember');
+                            changeIndex('plus');
+                        }}>Nie pamiętam</button>
                     </div>}
                 </div>
                 <div className='card__next' >
