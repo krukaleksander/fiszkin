@@ -3,18 +3,21 @@ import { VscChromeClose } from 'react-icons/vsc';
 import { TiArrowLeftOutline, TiArrowRightOutline } from 'react-icons/ti';
 import { useEffect } from 'react';
 const Card = ({ fish, setShowCard, changeIndex }) => {
+
     useEffect(() => {
         setActualFish(fish);
-    }, [fish])
+        setText(fish.word);
+        setShowRemember(false);
+    }, [fish]);
+
     const [actualFish, setActualFish] = useState(fish);
-    console.log(actualFish);
     const { word, translation, remember } = actualFish;
     const [text, setText] = useState(word);
     const [showRemember, setShowRemember] = useState(false);
     const handleCheck = () => {
         setText(translation);
         setShowRemember(true);
-    }
+    };
     return (
         <div className="card-blur">
             <VscChromeClose className='card-blur__close' onClick={() => setShowCard(false)} />
