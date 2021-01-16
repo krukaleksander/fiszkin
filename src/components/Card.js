@@ -7,13 +7,16 @@ const Card = ({ fish }) => {
         setText(translation);
     }
     return (
-        <div className="card">
-            <p className={remember ? 'remember' : 'not-remamber'}>
-                {remember ? 'Zapamiętane' : 'Nie pamiętasz'}
-            </p>
-            <h1 className="card-word">{text}</h1>
-            <button className="btn btn-success" onClick={() => handleCheck}>Sprawdź!</button>
+        <div className="card-blur">
+            <div className="card">
+                <p className={remember ? 'remember' : 'not-remamber'}>
+                    {remember ? 'Zapamiętane' : 'Nie pamiętasz'}
+                </p>
+                <h1 className="card-word">{text}</h1>
+                <button className="btn btn-success" onClick={() => handleCheck}>Sprawdź!</button>
+            </div>
         </div>
+
     )
 };
 
