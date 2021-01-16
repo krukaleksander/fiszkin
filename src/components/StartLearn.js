@@ -6,6 +6,8 @@ import { BiFolderOpen } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 import uniqid from 'uniqid';
 const StartLearn = () => {
+    const baseLocal = JSON.parse(localStorage.getItem("fiszkin"));
+
     const [data, setData] = useState(exampleBase);
     const [fishes, setFishes] = useState([]);
     const [nameOfPackage, setNameOfPackage] = useState('');
@@ -13,6 +15,16 @@ const StartLearn = () => {
     const [showDetails, setShowDetails] = useState(false);
     const [showAddPackage, setShowAddPackage] = useState(false);
     const [newPackageName, setNewPackageName] = useState('');
+    useEffect(() => {
+        if (baseLocal === null) {
+            localStorage.setItem('fiszkin', JSON.stringify(exampleBase));
+        };
+        setData(baseLocal);
+
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('fiszkin', JSON.stringify(data));
+    }, [data])
 
     const showFish = (index) => {
         const { packageId, packageName, content } = data[index];
