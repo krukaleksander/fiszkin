@@ -4,7 +4,7 @@ import { AiFillEdit } from 'react-icons/ai';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { GiCheckMark } from 'react-icons/gi';
 import AddNewFish from './AddNewFish';
-// import uniqid from 'uniqid';
+import Card from './Card';
 
 const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData }) => {
     const [fishes, setFishes] = useState(content);
@@ -12,6 +12,8 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
     const [editTranslation, setEditTranslation] = useState('');
     const [editWordId, setEditWordId] = useState('');
     const [showEditFish, setShowEditFish] = useState(false);
+    const [showCard, setShowCard] = useState(false);
+    const [indexOfFish, setIndexOfFish] = useState(0);
 
 
     const removeItem = (index) => {
@@ -91,6 +93,8 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
         <div className="package-present">
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
+            <button className='btn btn-primary package-present__learn-btn' onClick={() => setShowCard(true)}>Sprawdź się!</button>
+            {showCard && <Card fish={fishes[indexOfFish]} />}
             <AddNewFish fishes={fishes} setFishes={setFishes} data={data} setData={setData} idOfPack={idOfPack} />
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {

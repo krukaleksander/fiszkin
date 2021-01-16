@@ -26,6 +26,10 @@
     width: 100%;
     background-color: whitesmoke;
 
+    &__learn-btn {
+        margin-bottom: 10px;
+    }
+
     &__close {
         position: absolute;
         top: 10px;

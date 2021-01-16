@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 
-const Card = ({ word, translation, remember }) => {
+const Card = ({ fish }) => {
+    const { word, translation, remember } = fish;
     const [text, setText] = useState(word);
     const handleCheck = () => {
         setText(translation);
