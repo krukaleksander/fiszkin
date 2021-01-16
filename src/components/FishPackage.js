@@ -48,6 +48,49 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
         setData(newData);
     };
 
+    const setRemember = (id, flag) => {
+        const newData = data.map((pack) => {
+            if (pack.packageId === idOfPack) {
+                const { packageName, creationDate, content } = pack;
+                const newContent = content.map((fish) => {
+                    if (fish.id === id) {
+                        const { id, word, translation } = fish;
+                        if (flag === 'remember') {
+                            return {
+                                id: id,
+                                word: word,
+                                translation: translation,
+                                remember: true
+                            }
+                        } else {
+                            return {
+                                id: id,
+                                word: word,
+                                translation: translation,
+                                remember: false
+                            }
+                        };
+
+                    } else {
+                        return fish
+                    }
+                });
+                setFishes(newContent);
+                return {
+                    packageId: idOfPack,
+                    packageName,
+                    creationDate,
+                    content: newContent
+                }
+
+            } else {
+                return pack
+            }
+
+        });
+        setData(newData);
+    }
+
     const editItem = (word, translation, id) => {
         setEditWord(word);
         setEditTranslation(translation);
@@ -104,7 +147,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
             <button className='btn btn-primary package-present__learn-btn' onClick={() => setShowCard(true)}>Sprawdź się!</button>
-            {showCard && <Card fish={fishes[indexOfFish]} setShowCard={setShowCard} changeIndex={changeIndex} />}
+            {showCard && <Card fish={fishes[indexOfFish]} setShowCard={setShowCard} changeIndex={changeIndex} setIndexOfFish={setIndexOfFish} setRemember={setRemember} />}
             <AddNewFish fishes={fishes} setFishes={setFishes} data={data} setData={setData} idOfPack={idOfPack} />
             <div className="words-wrapper">
                 {fishes.map((fish, index) => {

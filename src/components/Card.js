@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
 import { TiArrowLeftOutline, TiArrowRightOutline } from 'react-icons/ti';
 import { useEffect } from 'react';
-const Card = ({ fish, setShowCard, changeIndex }) => {
+const Card = ({ fish, setShowCard, changeIndex, setIndexOfFish, setRemember }) => {
 
     useEffect(() => {
         setActualFish(fish);
@@ -11,7 +11,7 @@ const Card = ({ fish, setShowCard, changeIndex }) => {
     }, [fish]);
 
     const [actualFish, setActualFish] = useState(fish);
-    const { word, translation, remember } = actualFish;
+    const { id, word, translation, remember } = actualFish;
     const [text, setText] = useState(word);
     const [showRemember, setShowRemember] = useState(false);
     const handleCheck = () => {
@@ -20,7 +20,10 @@ const Card = ({ fish, setShowCard, changeIndex }) => {
     };
     return (
         <div className="card-blur">
-            <VscChromeClose className='card-blur__close' onClick={() => setShowCard(false)} />
+            <VscChromeClose className='card-blur__close' onClick={() => {
+                setShowCard(false);
+                setIndexOfFish(0);
+            }} />
             <div className="card">
                 <div className='card__back' >
                     <TiArrowLeftOutline onClick={() => changeIndex('minus')} />
@@ -32,8 +35,8 @@ const Card = ({ fish, setShowCard, changeIndex }) => {
                     <h1 className="card-word">{text}</h1>
                     <button className="btn btn-info" onClick={handleCheck}>Sprawdź!</button>
                     {showRemember && <div className="card__remember-or-not">
-                        <button className='btn btn-success'>Pamiętam</button>
-                        <button className='btn btn-warning'>Nie pamiętam</button>
+                        <button className='btn btn-success' onClick={() => setRemember(id, 'remember')}>Pamiętam</button>
+                        <button className='btn btn-warning' onClick={() => setRemember(id, 'not-remember')}>Nie pamiętam</button>
                     </div>}
                 </div>
                 <div className='card__next' >
