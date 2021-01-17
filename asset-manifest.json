@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/fiszkin/static/css/main.927d7dfb.chunk.css",
+    "main.js": "/fiszkin/static/js/main.6ca95548.chunk.js",
+    "main.js.map": "/fiszkin/static/js/main.6ca95548.chunk.js.map",
+    "runtime-main.js": "/fiszkin/static/js/runtime-main.cd37577d.js",
+    "runtime-main.js.map": "/fiszkin/static/js/runtime-main.cd37577d.js.map",
+    "static/css/2.95258f03.chunk.css": "/fiszkin/static/css/2.95258f03.chunk.css",
+    "static/js/2.3ac311fa.chunk.js": "/fiszkin/static/js/2.3ac311fa.chunk.js",
+    "static/js/2.3ac311fa.chunk.js.map": "/fiszkin/static/js/2.3ac311fa.chunk.js.map",
+    "index.html": "/fiszkin/index.html",
+    "precache-manifest.4fded65f0fa487820fd156a05edc1f40.js": "/fiszkin/precache-manifest.4fded65f0fa487820fd156a05edc1f40.js",
+    "service-worker.js": "/fiszkin/service-worker.js",
+    "static/css/2.95258f03.chunk.css.map": "/fiszkin/static/css/2.95258f03.chunk.css.map",
+    "static/css/main.927d7dfb.chunk.css.map": "/fiszkin/static/css/main.927d7dfb.chunk.css.map",
+    "static/js/2.3ac311fa.chunk.js.LICENSE": "/fiszkin/static/js/2.3ac311fa.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd37577d.js",
+    "static/css/2.95258f03.chunk.css",
+    "static/js/2.3ac311fa.chunk.js",
+    "static/css/main.927d7dfb.chunk.css",
+    "static/js/main.6ca95548.chunk.js"
+  ]
+}
