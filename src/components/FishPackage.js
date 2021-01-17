@@ -14,6 +14,7 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
     const [showEditFish, setShowEditFish] = useState(false);
     const [showCard, setShowCard] = useState(false);
     const [indexOfFish, setIndexOfFish] = useState(0);
+    const [showRemove, setShowRemove] = useState(false);
 
     const checkIndex = (number) => {
         if (number > fishes.length - 1) return 0;
@@ -141,9 +142,22 @@ const FishPackage = ({ content, name, idOfPack, setShowDetails, data, setData })
     };
     const closeEditFish = () => {
         setShowEditFish(false);
-    }
+    };
+    const removePackage = () => {
+        const newData = data.filter(pack => pack.packageId !== idOfPack);
+        setData(newData);
+
+    };
     return (
         <div className="package-present">
+            <button className='package-present__delete-package btn btn-danger' onClick={() => setShowRemove(true)}><RiDeleteBinFill /></button>
+            {showRemove && <div className="remove-package">
+                <h4 className="remove-package__heading">Napewno chcesz usunąć paczkę?</h4>
+                <div>
+                    <a href='/' className="btn btn-danger" onClick={removePackage}>Tak</a>
+                    <button className="btn btn-success" onClick={() => setShowRemove(false)}>Nie</button>
+                </div>
+            </div>}
             <VscChromeClose className='package-present__close' onClick={closeContainer} />
             <h1 className="package-present__title">{name}</h1>
             {fishes.length > 0 && <button className='btn btn-primary package-present__learn-btn' onClick={() => setShowCard(true)}>Sprawdź się!</button>}
