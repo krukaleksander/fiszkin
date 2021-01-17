@@ -13,6 +13,7 @@ import StartLearn from './components/StartLearn';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import './css/styles.min.css';
+import { FaRegSmileWink } from 'react-icons/fa';
 window.jQuery = window.$ = $;
 require('bootstrap');
 
@@ -24,7 +25,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1 className="main-heading">Fiszkin</h1>
-        <p className="main-desc">Darmowe narzędzie do nauki poprzez stosowanie fiszek =)</p>
+        <p className="main-desc">Narzędzie do nauki poprzez stosowanie fiszek <FaRegSmileWink /></p>
       </header>
       <Router>
         <div>

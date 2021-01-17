@@ -76,7 +76,7 @@ const StartLearn = () => {
 
         <div className="start-learn container" >
             {showBeginerInfo && <BeginerInfo setShowBeginerInfo={setShowBeginerInfo} />}
-            <h2 className='alert alert-info display-12'>Dostępna liczba paczek: {data.length}</h2>
+            <h2 className='alert alert-info start-learn__amount'>Dostępna liczba paczek: {data.length}</h2>
             <div className="packages row justify-content-center">
                 {data.map((pack, index) => {
                     const { packageName, creationDate, content } = pack;
