@@ -1,5 +1,12 @@
+@import './parts/mq';
+
 .App {
     text-align: center;
+
+    @include ipadPro {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
 
     .App-header {
         background-color: #282c34;

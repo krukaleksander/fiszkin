@@ -7,10 +7,13 @@
 
     &__icon {
         margin-top: 10px;
+        margin-right: 5px;
     }
 
     &__name {
         font-weight: bolder;
+        margin-left: 5px;
+        flex-grow: 1;
     }
 }
 
@@ -45,6 +48,12 @@
     width: 100%;
     background-color: whitesmoke;
     overflow: scroll;
+
+    @include ipadPro {
+        max-width: 1000px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
     &__delete-package {
         position: absolute;
@@ -140,6 +149,11 @@
         display: flex;
         flex-direction: column;
         padding: 40px;
+
+        @include ipadPro {
+            max-width: 400px;
+            margin: 0 auto;
+        }
 
         &__close {
             font-size: 25px;

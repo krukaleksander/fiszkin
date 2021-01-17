@@ -81,11 +81,10 @@ const StartLearn = () => {
                 {data.map((pack, index) => {
                     const { packageName, creationDate, content } = pack;
                     return (
-                        <div className="package col-10 justify-content-between" key={index} onClick={() => showFish(index)}>
+                        <div className="package col-10" key={index} onClick={() => showFish(index)}>
                             <BiFolderOpen className='package__icon' />
                             <p className="package__length">{content.length}</p>
                             <p className="package__name">{packageName}</p>
-                            <p className="package__creation-date">Utworzono: {creationDate}</p>
 
                         </div>
                     )
