@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import exampleBase from '../database/data';
-import Card from './Card';
+import BeginerInfo from './BeginerInfo';
 import FishPackage from './FishPackage';
 import { BiFolderOpen } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
@@ -15,6 +15,7 @@ const StartLearn = () => {
     const [showDetails, setShowDetails] = useState(false);
     const [showAddPackage, setShowAddPackage] = useState(false);
     const [newPackageName, setNewPackageName] = useState('');
+    const [showBeginerInfo, setShowBeginerInfo] = useState(false);
     useEffect(() => {
         if (baseLocal === null) {
             localStorage.setItem('fiszkin', JSON.stringify(exampleBase));
@@ -24,7 +25,13 @@ const StartLearn = () => {
     }, [])
     useEffect(() => {
         localStorage.setItem('fiszkin', JSON.stringify(data));
-    }, [data])
+    }, [data]);
+    useEffect(() => {
+        const firstLogin = localStorage.getItem('fiszkin-first-login');
+        if (!firstLogin) {
+            setShowBeginerInfo(true);
+        }
+    }, []);
 
     const showFish = (index) => {
         const { packageId, packageName, content } = data[index];
@@ -68,6 +75,7 @@ const StartLearn = () => {
     return (
 
         <div className="start-learn container" >
+            {showBeginerInfo && <BeginerInfo setShowBeginerInfo={setShowBeginerInfo} />}
             <h2 className='alert alert-info display-12'>Dostępna liczba paczek: {data.length}</h2>
             <div className="packages row justify-content-center">
                 {data.map((pack, index) => {
